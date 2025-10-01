@@ -36,6 +36,22 @@ public class GraphHopperProfileTest {
 
     private static final String GH_LOCATION = "target/gh-profile-config-gh";
 
+    // J'aimerais faire un test pour hashCode() pour tester si on a le même hashcode pour 1 objet
+    // j'ai besoin d'un nom, et le hash. Après je fait un assertEquals? 
+    @Test
+    public void testHashCodeEqualHash(){
+        // Arrange (setup pour appeler la fonction)
+        Profile profile1 = new Profile("profile1");
+        // Profile profile2 = new Profile("profile2");
+
+        // Act (appel la fonction)
+        int hash1 = profile1.hashCode();
+        int hash2 = profile1.hashCode();
+
+        // Assert
+        assertEquals(hash1, hash2);
+    }
+
     @Test
     public void deserialize() throws IOException {
         ObjectMapper objectMapper = Jackson.newObjectMapper();
