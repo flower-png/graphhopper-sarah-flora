@@ -36,7 +36,7 @@ public class GraphHopperProfileTest {
 
     private static final String GH_LOCATION = "target/gh-profile-config-gh";
 
-    // J'aimerais faire un test pour hashCode() pour tester si on a le même hashcode pour 1 objet
+    // 1. J'aimerais faire un test pour hashCode() pour tester si on a le même hashcode pour 1 objet
     // j'ai besoin d'un nom, et le hash. Après je fait un assertEquals? 
     @Test
     public void testHashCodeEqualHash(){
@@ -50,6 +50,46 @@ public class GraphHopperProfileTest {
 
         // Assert
         assertEquals(hash1, hash2);
+    }
+
+    // 2. Tester si hashCode() done des hash différent pour 2 objets différents
+    @Test
+    public void testHashCodeDifferentHash(){
+        // Arrange (setup pour appeler la fonction)
+        Profile profile1 = new Profile("profile1");
+        Profile profile2 = new Profile("profile2");
+
+        // Act (appel la fonction)
+        int hash1 = profile1.hashCode();
+        int hash2 = profile2.hashCode();
+
+        // Assert
+        assertNotEquals(hash1, hash2);
+    }
+
+    // 3. Tester equals() quand on compare l'objet à lui même (branche 1)
+    @Test
+    public void testEqualSameObject(){
+        Profile profile = new Profile("my_profile");
+
+        assertTrue(profile.equals(profile));
+    }
+
+    // 4. Tester equals() quand l'objet est comparé à un objet null (branche 2.1)
+    @Test
+    public void testEqualNullObject(){
+        Profile profile = new Profile("my_profile");
+
+        assertFalse(profile.equals(null));
+    }
+
+    // 5. Tester equals() quand l'objet est comparé à un objet d'une autre classe (branche 2.2)
+    @Test
+    public void testEqualDifferentClass(){
+        Profile profile = new Profile("my_profile");
+        String otherObject = "Not a Profile";
+
+        assertFalse(profile.equals(otherObject));
     }
 
     @Test
