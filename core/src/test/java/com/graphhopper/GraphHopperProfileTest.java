@@ -92,6 +92,16 @@ public class GraphHopperProfileTest {
         assertFalse(profile.equals(otherObject));
     }
 
+    // 6. Tester equals() quand l'objet est comparé à un objet différent de la même classe qui n'est pas vide (branche 3)
+    @Test
+    public void testEqualSameClassDifferentObject(){
+        Profile profile = new Profile("my_profile");
+        Profile other_profile = new Profile("other_profile");
+
+        assertFalse(profile.equals(other_profile));
+
+    }
+
     @Test
     public void deserialize() throws IOException {
         ObjectMapper objectMapper = Jackson.newObjectMapper();
