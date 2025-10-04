@@ -25,6 +25,7 @@ import com.graphhopper.config.Profile;
 import com.graphhopper.jackson.Jackson;
 import com.graphhopper.routing.TestProfiles;
 import org.junit.jupiter.api.Test;
+import com.github.javafaker.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -41,15 +42,19 @@ public class GraphHopperProfileTest {
     @Test
     public void testHashCodeEqualHash(){
         // Arrange (setup pour appeler la fonction)
-        Profile profile1 = new Profile("profile1");
+        // Profile profile1 = new Profile("profile1");
+        // Avec Java Faker
+        Faker faker = new Faker();
+        Profile profile_fake = new Profile(faker.name().firstName().toLowerCase());
         // Profile profile2 = new Profile("profile2");
 
         // Act (appel la fonction)
-        int hash1 = profile1.hashCode();
-        int hash2 = profile1.hashCode();
+        int hash1 = profile_fake.hashCode();
+        int hash2 = profile_fake.hashCode();
 
         // Assert
         assertEquals(hash1, hash2);
+        
     }
 
     // 2. Tester si hashCode() done des hash différent pour 2 objets différents
