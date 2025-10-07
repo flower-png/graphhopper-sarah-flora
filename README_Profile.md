@@ -1,13 +1,4 @@
 # Documentation des tests
-## Consignes
-Documenter précisément chaque cas de test: 
-* nom du test
-* intention du test (quel comportement est testé)
-* motivation des données de test choisies
-* explication de l'oracle (comment déterminer le comportement attendu).
-* calculer le score de mutation avec les tests originaux pour les classes sélectionnées
-* calculer le score de mutation avec les nouveaux tests et déterminer si les nouveaux tests détectent de nouveaux mutants. Si oui, expliquez quels mutants sont détectés et pourquoi. Si non, ajoutez des tests pour détecter au moins 2 nouveaux mutants et documentez / justifiez votre démarche.
-
 ## Profile.java (tests dans GraphHopperProfileTest.java)
 
 #### 1. `testHashCodeEqualHash()`
@@ -120,6 +111,4 @@ return name.hashCode();
 8. replaced int return with 0  
 Pour le test `testHashCodeDifferentHash`, on s'attend à obtenir des hash différents, mais ils ont tous une valeur de 0, à cause de la mutation, ce qui fait que le test échoue.   
 
-
---- 
 

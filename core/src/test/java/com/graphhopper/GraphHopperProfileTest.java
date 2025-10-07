@@ -37,11 +37,12 @@ public class GraphHopperProfileTest {
 
     private static final String GH_LOCATION = "target/gh-profile-config-gh";
 
-    // 1. J'aimerais faire un test pour hashCode() pour tester si on a le même hashcode pour 1 objet
-    // j'ai besoin d'un nom, et le hash. Après je fait un assertEquals? 
+    // 1. Test pour hashCode() pour tester si on a le même hashcode pour 1 objet
     @Test
     public void testHashCodeEqualHash(){
+        // Pratique de la méthode AAA
         // Arrange (setup pour appeler la fonction)
+        // Sans Java Faker
         // Profile profile1 = new Profile("profile1");
         // Avec Java Faker
         Faker faker = new Faker();
@@ -73,6 +74,7 @@ public class GraphHopperProfileTest {
     }
 
     // 3. Tester equals() quand on compare l'objet à lui même (branche 1)
+    // check si c'est le même objet (le même nom)
     @Test
     public void testEqualSameObject(){
         Profile profile = new Profile("my_profile");
@@ -81,6 +83,7 @@ public class GraphHopperProfileTest {
     }
 
     // 4. Tester equals() quand l'objet est comparé à un objet null (branche 2.1)
+    // Check si l'objet est null
     @Test
     public void testEqualNullObject(){
         Profile profile = new Profile("my_profile");
@@ -89,6 +92,7 @@ public class GraphHopperProfileTest {
     }
 
     // 5. Tester equals() quand l'objet est comparé à un objet d'une autre classe (branche 2.2)
+    // Check si l'objet est d'une classe différente
     @Test
     public void testEqualDifferentClass(){
         Profile profile = new Profile("my_profile");
@@ -97,8 +101,9 @@ public class GraphHopperProfileTest {
         assertFalse(profile.equals(otherObject));
     }
 
-    // 6. Tester equals() quand l'objet est comparé à un objet différent de la même classe qui n'est pas vide (branche 3)
-     // Fonction check si 2 objet différents avec des noms différents retourne False
+    // 6. Tester equals() quand l'objet est comparé à un objet différent de la même classe qui n'est pas vide 
+    // (branche 3)
+     // Fonction check si 2 objet différents avec des noms différents retourne false
     @Test
     public void testEqualSameClassDifferentObject(){
         Profile profile = new Profile("my_profile");
@@ -107,7 +112,8 @@ public class GraphHopperProfileTest {
         assertFalse(profile.equals(other_profile));
     }
 
-    // 7. Fonction check quand 2 objets différents ont le même nom retourne True
+    // 7. Fonction check quand 2 objets sont différents mais de la même classe ont le même nom retourne True
+    // check si ils ont le même nom même si objet différent 
     @Test
     public void testEqualSameNameDifferentObject(){
         Profile profile = new Profile("same_name");
