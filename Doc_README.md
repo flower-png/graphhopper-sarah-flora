@@ -74,7 +74,7 @@ La méthode retourne True car, les noms des profiles sont les mêmes alors elles
 |                 | Avant |Après|
 |-----------------|---------- |-----|
 |Score de mutation|![alt text](images/profile/pitTestProfilebefore.png)| ![alt text](images/profile/pitTestProfileAfter.png)|
-|Détection mutants| ![alt text](images/profile/fullSurvivingMutantsBefore.png)| ![alt text](images\profile\survivingMutantsAfter.png)| 
+|Détection mutants| ![alt text](images/profile/fullSurvivingMutantsBefore.png)| ![alt text](images/profile/survivingMutantsAfter.png)| 
 
 Après l'ajout des nouveaux test, les tests on a pu détecté 8 mutants. 
 Nouveaux mutants découverts: 
