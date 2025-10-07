@@ -151,9 +151,11 @@
                         </jvmArgs>
                         <targetClasses>
                             <param>com.graphhopper.config.Profile</param>
+                            <param>com.graphhopper.storage.IntsRef</param>
                         </targetClasses>
                         <targetTests>
                             <param>com.graphhopper.GraphHopperProfileTest</param>
+                            <param>com.graphhopper.storage.IntsRefTest</param>
                         </targetTests>
                         <outputFormats>
                             <outputFormat>HTML</outputFormat>
