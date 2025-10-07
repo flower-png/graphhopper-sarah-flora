@@ -56,7 +56,7 @@ public class IntsRefTest {
      * Vérifier que isValid() rejette offset négatif dans le constructeur
      * en lançant IllegalStateException avec message commençant par "offset is negative:"
      * ints=[] et length=0 pour ne pas interférer avec les autres branches
-     * et offset=-1 pour offset négatif
+     * et offset entre -1 et -10 pour offset négatif
      */
     @Test
     public void IntsRef_isValid_negativeOffset_throwsIllegalStateException() {
