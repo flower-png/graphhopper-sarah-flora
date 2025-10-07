@@ -137,7 +137,7 @@
                     <artifactId>pitest-maven</artifactId>
                     <version>LATEST</version>
                     <dependencies>
-                        <!-- Plugin JUnit 5 pour Pitest conseillé par claude.ai-->
+                        <!-- Plugin JUnit 5 pour Pitest -->
                         <dependency>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-junit5-plugin</artifactId>
@@ -145,7 +145,7 @@
                         </dependency>
                 </dependencies>
                     <configuration>
-                        <!-- Remplace {argLine} conseillé par claude.ai -->
+                        <!-- Remplace {argLine} pour faire fonctionner pittest -->
                         <jvmArgs>
                             <value>-Xmx512m</value>
                         </jvmArgs>
