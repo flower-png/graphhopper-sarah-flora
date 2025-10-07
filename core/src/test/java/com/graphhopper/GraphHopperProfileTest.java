@@ -98,13 +98,22 @@ public class GraphHopperProfileTest {
     }
 
     // 6. Tester equals() quand l'objet est comparé à un objet différent de la même classe qui n'est pas vide (branche 3)
+     // Fonction check si 2 objet différents avec des noms différents retourne False
     @Test
     public void testEqualSameClassDifferentObject(){
         Profile profile = new Profile("my_profile");
         Profile other_profile = new Profile("other_profile");
 
         assertFalse(profile.equals(other_profile));
+    }
 
+    // 7. Fonction check quand 2 objets différents ont le même nom retourne True
+    @Test
+    public void testEqualSameNameDifferentObject(){
+        Profile profile = new Profile("same_name");
+        Profile profile2 = new Profile("same_name");
+
+        assertTrue(profile.equals(profile2));
     }
 
     @Test
