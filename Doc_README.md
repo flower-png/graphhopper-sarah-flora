@@ -69,5 +69,14 @@ On a utilisé 2 objets Profile différent mais avec les mêmes noms. Puisque la 
 La méthode retourne True car, les noms des profiles sont les mêmes alors elles seronts équivalentes. 
 
 ### Mutations
+#### `Profile.java`
+Avant 
+![alt text](images/profile/pitTestProfilebefore.png "Mutation pit test avant nouveau tests")
+![alt text](images/profile/fullSurvivingMutantsBefore.png "Mutation pit test qui ont survécu avant les nouveaux tests")
+
+Après
+![alt text](images/profile/pitTestProfileAfter.png "Mutation pit test après nouveau tests")
+![alt text](images\profile\survivingMutantsAfter.png)
 
 --- 
+
