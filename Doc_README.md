@@ -70,13 +70,57 @@ La méthode retourne True car, les noms des profiles sont les mêmes alors elles
 
 ### Mutations
 #### `Profile.java`
-Avant 
-![alt text](images/profile/pitTestProfilebefore.png "Mutation pit test avant nouveau tests")
-![alt text](images/profile/fullSurvivingMutantsBefore.png "Mutation pit test qui ont survécu avant les nouveaux tests")
 
-Après
-![alt text](images/profile/pitTestProfileAfter.png "Mutation pit test après nouveau tests")
-![alt text](images\profile\survivingMutantsAfter.png)
+|                 | Avant |Après|
+|-----------------|---------- |-----|
+|Score de mutation|![alt text](images/profile/pitTestProfilebefore.png)| ![alt text](images/profile/pitTestProfileAfter.png)|
+|Détection mutants| ![alt text](images/profile/fullSurvivingMutantsBefore.png)| ![alt text](images\profile\survivingMutantsAfter.png)| 
+
+Après l'ajout des nouveaux test, les tests on a pu détecté 8 mutants. 
+Nouveaux mutants découverts: 
+#### Dans `equals()`  
+```
+if (this == o) return true;
+```
+1.  replaced boolean return with false   
+Dans le `testEqualSameObject()`, on a que le profile est égale à soi-même. Ce qui est supposé retourner True, mais la fonction `equals()` retourne False ce qui échoue le assertTrue du test `testEqualSameObject()`.
+
+2. negated conditional   
+Ici on change `this == o` à `this != o return true`. Pour les cas où l'objet Profile n'égale pas à `o` ça va retourner `false` quand on attend un `true`.  
+Par exemple, dans `testEqualNullObjetc()`avec `this != o return true`, on aurait que la fonction `equals`retourne `true` quand on attend `false`. 
+  
+```
+if (o == null || getClass() != o.getClass()) return false;
+```
+3. negated conditional  
+`(o != null || getClass() != o.getClass()) return false`   
+Si on test `testEqualNullObject()` notre `null` passera à la dernière ligne de code où on compare le nom des objets. Puisque le null n'a pas de nom il va envoyer une exception ce qui fait que le test échoue.   
+[source](https://stackoverflow.com/questions/68808710/how-to-know-if-test-was-killed-by-junit-assertion-error-in-pit-mutation-testing)
+
+4. replaced boolean return with true  
+Si `o == null` est vrai ça retourne `true` mais ça ne marche pas. Le test échoué, car en attend un false.  
+Idem pour si `o` n'est pas de la même classe qu'un objet Profile.  
+
+5. negated conditional  
+`(o == null || getClass() == o.getClass()) return false`  
+Selon le test `testEqualSameNameDifferentObject()`, profile et profile2 sont de la même classe. Alors, `getClass() == o` est vrai et la méthode `equals()` va retourner false mais nous attendons `true`. Donc le test va échoué. 
+
+```
+return name.equals(profile.name);
+```
+6. replaced boolean return with true  
+Pour les tests qui attendent `false`, les tests vont échoués. 
+
+7. replaced boolean return with false  
+Pour les tests qui attendent `true`, les tests vont échoués
+
+#### Dans `hashCode()`
+```
+return name.hashCode();
+```
+8. replaced int return with 0  
+Pour le test `testHashCodeDifferentHash`, on s'attend à ce que les hash soient différents, mais ils sont tous une valeur de 0 à cause de la mutation ce qui fait que le test échoue. 
+
 
 --- 
 
