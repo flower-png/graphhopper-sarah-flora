@@ -93,6 +93,8 @@ public class GraphHopperTest2 {
                         ASTAR_BI + ",true,43",
         })
 
+        // Assurer que le getter retourne bien le même objet et 
+        // Assurer la détection du null dans l'objet
         @Test
         void getCountryRuleFactory() {
 
@@ -108,6 +110,7 @@ public class GraphHopperTest2 {
                 assertNull(hopper.getCountryRuleFactory());
         }
 
+        // Assurer qu'importRegistry est bien stocké 
         @Test
         void getImportRegistry() {
 
@@ -119,6 +122,7 @@ public class GraphHopperTest2 {
                 assertEquals(importRegistry, hopper.getImportRegistry());
         }
 
+        // Tester le setter si on stock la valeur correctement
         @Test
         void get_ET_setCustomAreasDirectory() {
 
@@ -130,6 +134,7 @@ public class GraphHopperTest2 {
                 assertEquals(fakerPathString, hopper.getCustomAreasDirectory());
         }
 
+        // Vérifier que le code échoue quand on essaie d'utiliser LocationIndex avant initialisation
         @Test
         void setLocationIndexThrowsIllegalStateException() {
                 // locationIndex non initialisé devrait lancer exception
@@ -137,6 +142,8 @@ public class GraphHopperTest2 {
                                 "LocationIndex not initialized");
         }
 
+
+        // Tester la sécurité d'initialisation
         @Test
         void getBaseGraphThrowsIllegalStateException() {
                 // baseGraph non initialisé devrait lancer exception
@@ -145,6 +152,7 @@ public class GraphHopperTest2 {
                 assertEquals("GraphHopper storage not initialized", exception.getMessage());
         }
 
+        // Tester le setter de OMSFile
         @Test
         void setOSMFileThrowsIllegalArgumentException() {
                 // paramètre string vide devrait lancer exception
@@ -153,6 +161,7 @@ public class GraphHopperTest2 {
                 assertEquals("OSM file cannot be empty.", exception.getMessage());
         }
 
+        // Assurer que quand c'est null on passe l'erreur de message
         @Test
         void setGraphHopperLocationThrowsIllegalArgumentException() {
                 // paramètre ghLocation null devrait lancer exception
