@@ -1,3 +1,4 @@
+Test github action activé
 # Documentation des tests
 ## Profile.java (tests dans GraphHopperProfileTest.java)
 
